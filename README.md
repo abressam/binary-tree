@@ -64,7 +64,22 @@
 
 ![image](https://github.com/abressam/binary-tree/assets/71531467/0ff6bbe6-07f1-4c38-a77c-402825b02165)
 
+### Deletar
+
+<p align="justify">
+    A função de deletar funcionará de forma semelhante as anteriores, ainda é necessário percorrer a árvore, indo para a direita ou pela esquerda em busca do elemento a ser deletado. Caso o nó deletado não possuia nós filhos, ele é apenas removido; caso o nó possua apenas um filho, é necessário substituí-lo pelo seu filho; caso o nó possua dois filhos, é necessário identificar o nó sucessor (nó da direita) para que ele seja substaituído e mantenha o nó que estava na esquerda como seu filho. 
+</p>
+
+![image](https://github.com/abressam/binary-tree/assets/71531467/e748feef-bd31-4079-9540-46a0edfa43a2)
+
+![image](https://github.com/abressam/binary-tree/assets/71531467/cfa54e9b-7cc6-49c0-9f68-9f0d387856f7)
 
 
+## Classe Main
 
+<p align="justify">
+    A classe main apenas cria uma instancia da árvore binária para que seja possível utilizar as funções criadas e imprime o resultado final.
+</p>
+
+![image](https://github.com/abressam/binary-tree/assets/71531467/b0a6b5c9-57aa-4a4e-8b16-2590b19e1053)
 
