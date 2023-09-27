@@ -20,13 +20,15 @@
     A classe nó possuirá três atributos: valor, direita e esquerda, e o seu construtor.
 </p>
 
-![image](https://github.com/abressam/binary-tree/assets/71531467/1b1f4be6-36c6-4816-bcba-611b0a6c299f)
+![image](https://github.com/abressam/binary-tree/assets/71531467/624c9c87-68a5-4e48-89a0-022b0431bfd8)
+
 
 <p align="justify">
     Além disso, também é necessário possuir oss getters and setters.
 </p>
 
-![image](https://github.com/abressam/binary-tree/assets/71531467/9b92f6a2-8412-4e4f-8641-adc945eefc68)
+![image](https://github.com/abressam/binary-tree/assets/71531467/312ca46c-a8a7-49a6-a5ed-c6689ad9b0c2)
+
 
 ## Classe Árvore Binária
 
