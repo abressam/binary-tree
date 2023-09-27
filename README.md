@@ -27,3 +27,9 @@
 </p>
 
 ![image](https://github.com/abressam/binary-tree/assets/71531467/9b92f6a2-8412-4e4f-8641-adc945eefc68)
+
+## Classe Árvore Binária
+
+<p align="justify">
+    Essa classe possui toda a lógica da árvore binária como as funções de inserir, deletar e buscar elementos.
+</p>
