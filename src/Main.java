@@ -17,9 +17,13 @@ public class Main {
         System.out.println(arvoreBinaria.buscaNo(5));
         System.out.println(arvoreBinaria.buscaNo(98));
 
-        arvoreBinaria.deletar(10);
+        int valor = arvoreBinaria.deletar(15);
 
-        // Imprima a árvore após a deleção
+        System.out.println("Nó deletado: " + valor);
+        System.out.println("Valor atual da raiz: " + arvoreBinaria.getValorRaiz());
+
+        arvoreBinaria.deletar(78);
+
         System.out.println("\nÁrvore após deletar um nó:");
         arvoreBinaria.imprimirArvore();
 

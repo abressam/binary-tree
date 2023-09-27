@@ -4,6 +4,14 @@ public class ArvoreBinaria {
     // Criar árvore binária vazia
     public ArvoreBinaria() {}
 
+    public int getValorRaiz() {
+        if (raiz != null) {
+            return raiz.getValor();
+        } else {
+            return -1; // Por exemplo, retornando -1 em caso de árvore vazia
+        }
+    }
+
     public void imprimirArvore() {
         System.out.println(raiz.getValor()); // Imprime o valor da raiz sem "└──"
         imprimirRecursividade(raiz.getEsquerda(), " ");
@@ -56,24 +64,23 @@ public class ArvoreBinaria {
         }
     }
 
-    public void deletar(int valor) {
+    public int deletar(int valor) {
         raiz = deletarRecursivamente(raiz, valor);
+        return valor;
     }
 
     private No deletarRecursivamente(No no, int valor) {
         if (no == null) {
-            return no; // Caso base: valor não encontrado
+            System.out.println("Valor " + valor + " não encontrado na árvore");
+            return no;
         }
 
-        // Se o valor for menor que o valor do nó, ele está na esquerda
         if (valor < no.getValor()) {
             no.setEsquerda(deletarRecursivamente(no.getEsquerda(), valor));
         }
-        // Se o valor for maior que o valor do nó, ele está na direita
         else if (valor > no.getValor()) {
             no.setDireta(deletarRecursivamente(no.getDireta(), valor));
         }
-        // Se o valor for igual ao valor do nó, este é o nó a ser deletado
         else {
             // Caso 1: Nó folha ou com apenas um filho
             if (no.getEsquerda() == null) {
@@ -83,9 +90,7 @@ public class ArvoreBinaria {
             }
 
             // Caso 2: Nó com dois filhos
-            // Encontrar o nó mínimo na subárvore direita (sucessor)
             no.setValor(encontrarMenorValor(no.getDireta()));
-            // Deletar o nó mínimo da subárvore direita
             no.setDireta(deletarRecursivamente(no.getDireta(), no.getValor()));
         }
         return no;
