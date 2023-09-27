@@ -1,14 +1,13 @@
 public class ArvoreBinaria {
     private No raiz;
 
-    // Criar árvore binária vazia
     public ArvoreBinaria() {}
 
     public int getValorRaiz() {
         if (raiz != null) {
             return raiz.getValor();
         } else {
-            return -1; // Por exemplo, retornando -1 em caso de árvore vazia
+            return -1;
         }
     }
 
