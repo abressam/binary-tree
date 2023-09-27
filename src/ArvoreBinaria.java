@@ -1,0 +1,103 @@
+public class ArvoreBinaria {
+    private No raiz;
+
+    // Criar árvore binária vazia
+    public ArvoreBinaria() {}
+
+    public void imprimirArvore() {
+        System.out.println(raiz.getValor()); // Imprime o valor da raiz sem "└──"
+        imprimirRecursividade(raiz.getEsquerda(), " ");
+        imprimirRecursividade(raiz.getDireta(), " ");
+    }
+
+    private void imprimirRecursividade(No no, String prefixo) {
+        if (no != null) {
+            System.out.println(prefixo + "└── " + no.getValor());
+            imprimirRecursividade(no.getEsquerda(), prefixo + "    ");
+            imprimirRecursividade(no.getDireta(), prefixo + "    ");
+        }
+    }
+
+    private No inserirRecursividade(No no_atual, int valor) {
+        if (no_atual == null) {
+            return new No(valor);
+        }
+
+        if (valor < no_atual.getValor()) {
+            no_atual.setEsquerda(inserirRecursividade(no_atual.getEsquerda(), valor));
+        } else if (valor > no_atual.getValor()) {
+            no_atual.setDireta(inserirRecursividade(no_atual.getDireta(), valor));
+        } else {
+            no_atual.setDireta(inserirRecursividade(no_atual.getDireta(), valor));
+        }
+
+        return no_atual;
+    }
+
+    public void inserir(int valor) {
+        raiz = inserirRecursividade(raiz, valor);
+    }
+
+    public boolean buscaNo(int valor) {
+        return buscarNoRecursividade(raiz, valor);
+    }
+
+    private boolean buscarNoRecursividade(No no_atual, int valor) {
+        if (no_atual == null) {
+            return false;
+        }
+
+        if (valor == no_atual.getValor()) {
+            return true;
+        } else if (valor < no_atual.getValor()) {
+            return buscarNoRecursividade(no_atual.getEsquerda(), valor);
+        } else {
+            return buscarNoRecursividade(no_atual.getDireta(), valor);
+        }
+    }
+
+    public void deletar(int valor) {
+        raiz = deletarRecursivamente(raiz, valor);
+    }
+
+    private No deletarRecursivamente(No no, int valor) {
+        if (no == null) {
+            return no; // Caso base: valor não encontrado
+        }
+
+        // Se o valor for menor que o valor do nó, ele está na esquerda
+        if (valor < no.getValor()) {
+            no.setEsquerda(deletarRecursivamente(no.getEsquerda(), valor));
+        }
+        // Se o valor for maior que o valor do nó, ele está na direita
+        else if (valor > no.getValor()) {
+            no.setDireta(deletarRecursivamente(no.getDireta(), valor));
+        }
+        // Se o valor for igual ao valor do nó, este é o nó a ser deletado
+        else {
+            // Caso 1: Nó folha ou com apenas um filho
+            if (no.getEsquerda() == null) {
+                return no.getDireta();
+            } else if (no.getDireta() == null) {
+                return no.getEsquerda();
+            }
+
+            // Caso 2: Nó com dois filhos
+            // Encontrar o nó mínimo na subárvore direita (sucessor)
+            no.setValor(encontrarMenorValor(no.getDireta()));
+            // Deletar o nó mínimo da subárvore direita
+            no.setDireta(deletarRecursivamente(no.getDireta(), no.getValor()));
+        }
+        return no;
+    }
+
+    private int encontrarMenorValor(No no) {
+        int menorValor = no.getValor();
+        while (no.getEsquerda() != null) {
+            menorValor = no.getEsquerda().getValor();
+            no = no.getEsquerda();
+        }
+        return menorValor;
+    }
+
+}
